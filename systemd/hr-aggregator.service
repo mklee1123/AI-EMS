@@ -1,0 +1,18 @@
+[Unit]
+Description=HR EMS — 데이터 집계 워커
+After=network.target hr-postgres.service
+Requires=hr-postgres.service
+
+[Service]
+Type=simple
+User=dt
+WorkingDirectory=/home/dt/hr_1.1
+EnvironmentFile=/home/dt/hr_1.1/site.env
+ExecStart=/home/dt/hr_1.1/venv/bin/python3 bin/aggregator.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

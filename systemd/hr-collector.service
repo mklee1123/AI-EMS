@@ -1,0 +1,17 @@
+[Unit]
+Description=HR EMS — Modbus 온도 수집
+After=network.target
+
+[Service]
+Type=simple
+User=dt
+WorkingDirectory=/home/dt/hr_1.1
+EnvironmentFile=/home/dt/hr_1.1/site.env
+ExecStart=/home/dt/hr_1.1/venv/bin/python3 bin/collector.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

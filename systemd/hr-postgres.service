@@ -1,0 +1,18 @@
+[Unit]
+Description=HR EMS — PostgreSQL (local user instance)
+After=network.target
+
+[Service]
+Type=forking
+User=dt
+Environment=PGDATA=/home/dt/.local/var/postgresql-hr1-data
+Environment=PGPORT=5432
+PIDFile=/home/dt/.local/var/postgresql-hr1-data/postmaster.pid
+ExecStart=/home/dt/.local/bin/pg_ctl -D /home/dt/.local/var/postgresql-hr1-data -l /home/dt/.local/var/postgresql-hr1-data/server.log start
+ExecStop=/home/dt/.local/bin/pg_ctl -D /home/dt/.local/var/postgresql-hr1-data stop -m fast
+ExecReload=/home/dt/.local/bin/pg_ctl -D /home/dt/.local/var/postgresql-hr1-data reload
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
