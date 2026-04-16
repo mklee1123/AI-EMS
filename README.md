@@ -10,6 +10,7 @@ Modbus RTU 온도 조절기에서 데이터를 수집해 PostgreSQL에 저장하
 | 폴더 | 사이트 | 장비 수 |
 |---|---|---|
 | [`sites/hr_ngr`](sites/hr_ngr) | 하나로마트 남구로역점 | 7대 (unit 11–17) |
+| [`sites/hr_nyg`](sites/hr_nyg) | 하나로마트 노량진점 | 현장 확인 필요 |
 
 ---
 
